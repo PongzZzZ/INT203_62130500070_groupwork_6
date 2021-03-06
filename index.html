@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Basic Vue Js - HelloWorld App</title>
+
+
+
+    <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+
+    <!-- Using via Google Web Fonts -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+
+
+    <!-- https://tailwindcss.com/docs/installation -->
+
+    <!-- Using Tailwind via CDN -->
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+
+    <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+
+    <!-- Vue CDN -->
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <style>
+        body {
+            background-color: #31364d;
+            border-radius: 10px
+        }
+
+        .card {
+            width: 400px;
+            border: none;
+            border-radius: 10px;
+            background-color: #fff
+        }
+
+
+    </style>
+
+</head>
+
+
+
+<body>
+    <div id="app" class="container mt-5 flex justify-center">
+        <div class="card p-3">
+            <div class="flex items-center">
+                <div class="image"> <img v-bind:src="image" class="rounded" width="155"> </div>
+                <div>
+                    <h1>{{showfullname}}</h1>
+                    <p>{{ showemail}} <span>{{showjob}}</span></p>
+                </div>
+            </div>
+            <!--form-->
+            <div class="flex">
+                <form @submit.prevent="checkForm">
+                    <div>
+                        <h1 class="font-black">Registration Form</h1>
+                        <p v-if="errors" class="text-red-500">
+                            <b>Please correct the following error(s):</b>
+                            <ul>
+                                <li v-for="error in errors">{{ error }}</li>
+                            </ul>
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="flex flex-col">
+                                <label for="firstname">Username</label>
+                                <input type="text" id="username" v-model.lazy="username" name="username"
+                                    class="bg-gray-100 rounded px-4 py-2 mb-4">
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="email">Email</label>
+                                <input type="text" id="email" v-model.lazy="email" name="email"
+                                    class="bg-gray-100 rounded px-4 py-2 mb-4">
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="lastname">lastname</label>
+                                <input type="text" id="lastname" v-model.lazy="lastname" name="lastname"
+                                    class="bg-gray-100 rounded px-4 py-2 mb-4">
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="fullname">Full-name</label>
+                                <input type="text" id="fullname" v-model.lazy="fullname" name="fullname"
+                                    class="bg-gray-100 rounded px-4 py-2 mb-4">
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="title">Jobs</label>
+                                <input type="text" id="title" v-model.lazy="title" name="title"
+                                    class="bg-gray-100 rounded px-4 py-2 mb-4">
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="language">Language</label>
+                                <select id="language" v-model.lazy="language" name="language"
+                                    class="bg-gray-100 rounded px-4 py-2 mb-4">
+                                    <option v-for="language in language_lists" :value="language.language_id">
+                                        {{language.language}}
+                                    </option>
+                                   </select> 
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit" class="px-8 py-2 text-white bg-green-500 rounded-lg hover:bg-green-600 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2">
+                    </div>
+                </form>
+            </div>
+            <!-- end form-->
+        </div>
+
+    </div>
+
+    <!-- my main.js -->
+
+    <script src="./main2.js"></script>
+
+</body>
+
+
+
+</html>
